@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 680c11febd7e344ae9a995e78e33e5cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 15
+  lifeTime: 6
 --- !u!1 &3587157642968573904
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,5 +197,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41abcb152416e46fc9289708c0d811f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbit: {fileID: 0}
   attacker: {fileID: 0}

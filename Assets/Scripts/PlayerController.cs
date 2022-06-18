@@ -57,14 +57,16 @@ public class PlayerController : MonoBehaviour
             weaponsController.DesactiveWeapons(2);
         }
     }
-    
+
     //Player Out of the WeaponsZone
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Arma Atrayente") || other.CompareTag("Arma Parabolica") || other.CompareTag("Arma Laser"))
         {
+            
             try
             {
+                weaponsController.weaponsAnim[weaponsController.status-1].SetActive(true);
                 weaponsController.weapons[2].GetComponent<Weapons>().hammerBullets.GetComponent<HammerBullet>().AutoDestroy();
             }
             catch (Exception)

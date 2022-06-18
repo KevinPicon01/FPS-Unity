@@ -7,6 +7,7 @@ public class WeaponsController : MonoBehaviour
 {
     [SerializeField] private float timeBetweenShots;
     [SerializeField] public GameObject[] weapons;
+    [SerializeField] public GameObject[] weaponsAnim;
     public int status = 0;
     private bool secure = true;
     private float lastShot = 0;
@@ -49,9 +50,17 @@ public class WeaponsController : MonoBehaviour
             
         }
     }
+    
+    public void DesactiveWeaponsAnima(int index)
+    {
+        weaponsAnim[index].SetActive(false);
+    }
+    
 
     public void DesactiveWeapons(int index)
     {
+
+        
       
         foreach (GameObject weapon in weapons)
         {
@@ -63,7 +72,7 @@ public class WeaponsController : MonoBehaviour
             status = 0;
             return;
         }
-      
+        DesactiveWeaponsAnima(index);
         weapons[index].SetActive(true);
     }
 }

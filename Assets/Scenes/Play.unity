@@ -1292,6 +1292,10 @@ MonoBehaviour:
   - {fileID: 1240671591}
   - {fileID: 1450492168}
   - {fileID: 679329556}
+  weaponsAnim:
+  - {fileID: 289760444}
+  - {fileID: 362300577}
+  - {fileID: 1948135283}
   status: 0
 --- !u!1 &1174458079
 GameObject:

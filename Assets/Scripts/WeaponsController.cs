@@ -25,7 +25,7 @@ public class WeaponsController : MonoBehaviour
         if (Time.time - lastShot > timeBetweenShots)secure = true;
     }
     
-    // ReSharper disable Unity.PerformanceAnalysis
+    // Shoot function
     private void Shoot()
     {
         var weapon = weapons[status - 1].GetComponent<Weapons>();
@@ -52,30 +52,26 @@ public class WeaponsController : MonoBehaviour
             
         }
     }
-    
-    public void DesactiveWeaponsAnima(int index)
+    // Desable Weapons Animations
+    public void DisableWeaponsAnima(int index)
     {
         weaponsAnim[index].SetActive(false);
     }
     
 
-    public void DesactiveWeapons(int index)
+    public void DisableWeapons(int index)
     {
-
-        
-      
         foreach (GameObject weapon in weapons)
         {
             weapon.SetActive(false);
         }
-
         if (index == 3)
         {
             GetComponent<AudioSource>().Stop();
             status = 0;
             return;
         }
-        DesactiveWeaponsAnima(index);
+        DisableWeaponsAnima(index);
         weapons[index].SetActive(true);
         GetComponent<AudioSource>().clip = weaponsSounds[index];
         GetComponent<AudioSource>().Play();

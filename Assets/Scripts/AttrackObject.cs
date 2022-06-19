@@ -40,6 +40,7 @@ public class AttrackObject : MonoBehaviour
             float step = speed * Time.deltaTime;
             try
             {
+                //Move objects to target
                 transform.position = Vector3.MoveTowards(transform.position, target.transform.position+pos, step);
             }
             catch (Exception e)
@@ -50,6 +51,7 @@ public class AttrackObject : MonoBehaviour
             {
                 isAtrrack = false;
                 orbitingObject = target.transform;
+                //Axie positive or negative
                 x = RandomNumber();
                 y = RandomNumber();
                 z = RandomNumber();
@@ -66,6 +68,7 @@ public class AttrackObject : MonoBehaviour
     {
         if (!isOrbit) return;
         var pos = new Vector3(x, y, z);
+        //Axis of rotation
         if(w==0)
         {
             pos = new Vector3(Mathf.Cos(angle) * radius * x, Mathf.Sin(angle) * radius*y, Mathf.Cos(angle) * radius*z);
@@ -78,7 +81,6 @@ public class AttrackObject : MonoBehaviour
         {
             pos = new Vector3(Mathf.Cos(angle) * radius*x, Mathf.Cos(angle) * radius*y, Mathf.Sin(angle) * radius*z);
         }
-
         try
         {
             transform.position = orbitingObject.position + pos;

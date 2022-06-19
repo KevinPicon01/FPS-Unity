@@ -16,6 +16,7 @@ public class Weapons : MonoBehaviour
 
     public void Shoot()
     {
+        //Add a bullet to the scene
         GetComponent<AudioSource>().Play();
         var transformPosition = bulletSpawns.transform.position;
         var bullet = Instantiate(bullets, transformPosition, Quaternion.identity);
@@ -35,10 +36,12 @@ public class Weapons : MonoBehaviour
 
     public void Thunder()
     {
+        //Display the thunder
         display.SetActive(true);
     }
     public void BackHammer()
     {
+        //Come back to the hammer
         var hammerB = hammerBullets.GetComponent<HammerBullet>();
         hammerB.back = true;
         hammerB.speed = speedback;

@@ -6,10 +6,6 @@ using UnityEngine;
 public class Display : MonoBehaviour
 {
     private float time = 0.5f;
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
     private void Update()
     {
@@ -17,6 +13,5 @@ public class Display : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-        
     }
 }

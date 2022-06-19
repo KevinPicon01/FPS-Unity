@@ -7,6 +7,7 @@ public class Stop : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
+        //Stop the bullet
         if (collision.gameObject.tag == "Bullet")
         {
             collision.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;

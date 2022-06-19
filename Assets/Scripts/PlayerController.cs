@@ -68,17 +68,17 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Arma Parabolica"))
         { 
             weaponsController.status = 1;
-            weaponsController.DesactiveWeapons(0);
+            weaponsController.DisableWeapons(0);
         }
         else if (other.gameObject.CompareTag("Arma Atrayente"))
         {
             weaponsController.status = 2;
-            weaponsController.DesactiveWeapons(1);
+            weaponsController.DisableWeapons(1);
         }
         else if (other.gameObject.CompareTag("Arma Laser"))
         {
             weaponsController.status = 3;
-            weaponsController.DesactiveWeapons(2);
+            weaponsController.DisableWeapons(2);
         }
     }
 
@@ -87,7 +87,6 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Arma Atrayente") || other.CompareTag("Arma Parabolica") || other.CompareTag("Arma Laser"))
         {
-            
             try
             {
                 weaponsController.weaponsAnim[weaponsController.status-1].SetActive(true);
@@ -97,16 +96,7 @@ public class PlayerController : MonoBehaviour
             {
                 // ignored
             }
-            weaponsController.DesactiveWeapons(3);
-        }
-    }
-    private void PlayFootStepAudio()
-    {
-        if (transform.GetComponent<CharacterController>().isGrounded)
-        {
-            n = RandomNumberGenerator.GetInt32(1, footSteps.Length);
-            audioSource.clip = footSteps[n];
-            audioSource.PlayOneShot(audioSource.clip);
+            weaponsController.DisableWeapons(3);
         }
     }
 }

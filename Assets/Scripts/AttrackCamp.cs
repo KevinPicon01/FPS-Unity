@@ -15,11 +15,9 @@ public class AttrackCamp : MonoBehaviour
              other.GetComponent<AttrackObject>().isAtrrack = true;
             other.GetComponent<AttrackObject>().target = gameObject;
             attacker = other.gameObject;
-            Debug.Log("Attacker: " + attacker);
             secure = true;
         }
     }
-
     public void Update()
     {
         if (secure)

@@ -8,6 +8,7 @@ public class WeaponsController : MonoBehaviour
     [SerializeField] private float timeBetweenShots;
     [SerializeField] public GameObject[] weapons;
     [SerializeField] public GameObject[] weaponsAnim;
+    [SerializeField] private AudioClip[] weaponsSounds;
     public int status = 0;
     private bool secure = true;
     private float lastShot = 0;
@@ -40,6 +41,7 @@ public class WeaponsController : MonoBehaviour
         {
             if (!weapon.isFiring)
             {
+                weapon.GetComponent<AudioSource>().Play();
                 weapons[status - 1].SetActive(false);
                 weapon.isFiring = true;
                 weapon.Shoot();
@@ -69,11 +71,22 @@ public class WeaponsController : MonoBehaviour
 
         if (index == 3)
         {
+            GetComponent<AudioSource>().Stop();
             status = 0;
             return;
         }
         DesactiveWeaponsAnima(index);
         weapons[index].SetActive(true);
+        GetComponent<AudioSource>().clip = weaponsSounds[index];
+        GetComponent<AudioSource>().Play();
+        if (index==2)
+        {
+            GetComponent<AudioSource>().loop = true;
+        }
+        else
+        {
+            GetComponent<AudioSource>().loop = false;
+        }
     }
 }
     

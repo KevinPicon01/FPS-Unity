@@ -19,6 +19,7 @@ public class HammerBullet : MonoBehaviour
             if (transform.position == target.position)
             {
                 orginial.SetActive(true);
+                orginial.GetComponent<Weapons>().Thunder();
                 AutoDestroy();
             }
         }

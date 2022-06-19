@@ -131,6 +131,7 @@ MonoBehaviour:
   back: 0
   speed: 0
   target: {fileID: 0}
+  orginial: {fileID: 0}
 --- !u!1 &7149515572880395224
 GameObject:
   m_ObjectHideFlags: 0

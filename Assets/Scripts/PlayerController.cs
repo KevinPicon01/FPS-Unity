@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = System.Random;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,11 +12,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float sensibility;
     [SerializeField] private WeaponsController weaponsController;
-    
+    [SerializeField] private AudioClip[] footSteps;
     private float xRotation;
     private float yRotation;
     private float gravity = -9.81f;
-    
+    private AudioSource audioSource;
+    private int n;
+    private bool alt;
+    private float time;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     private void Update()
     {
         float mouseX = Input.GetAxis("Mouse X");
@@ -33,6 +44,19 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = transform.right * moveHorizontal + moveVertical * transform.forward;
         transform.GetComponent<CharacterController>().Move(movement * speed * Time.deltaTime);
         
+        //Llamar cada 0,5 segundo una funcion que cambie el sonido de los pies
+        var x = (int)Time.time;
+        var t = Time.time;
+
+        if (Time.time - time > 0.3f && transform.GetComponent<CharacterController>().isGrounded)
+        {
+            time = Time.time;
+            n = UnityEngine.Random.Range(0, footSteps.Length);
+            audioSource.clip = footSteps[n];
+            audioSource.Play();
+            //PlayFootStepAudio();
+        }
+
         //Player Gravity
         Vector3 gravityVector = new Vector3(0, gravity, 0);
         transform.GetComponent<CharacterController>().Move(gravityVector * Time.deltaTime);
@@ -74,6 +98,15 @@ public class PlayerController : MonoBehaviour
                 // ignored
             }
             weaponsController.DesactiveWeapons(3);
+        }
+    }
+    private void PlayFootStepAudio()
+    {
+        if (transform.GetComponent<CharacterController>().isGrounded)
+        {
+            n = RandomNumberGenerator.GetInt32(1, footSteps.Length);
+            audioSource.clip = footSteps[n];
+            audioSource.PlayOneShot(audioSource.clip);
         }
     }
 }

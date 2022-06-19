@@ -45,8 +45,6 @@ public class AttrackObject : MonoBehaviour
             catch (Exception e)
             {
                 isAtrrack = false;
-                Console.WriteLine(e);
-                throw;
             }            
             if (transform.position == target.transform.position+pos)
             {
@@ -80,6 +78,14 @@ public class AttrackObject : MonoBehaviour
         {
             pos = new Vector3(Mathf.Cos(angle) * radius*x, Mathf.Cos(angle) * radius*y, Mathf.Sin(angle) * radius*z);
         }
-        transform.position = orbitingObject.position + pos;
+
+        try
+        {
+            transform.position = orbitingObject.position + pos;
+        }
+        catch (Exception e)
+        {
+            isOrbit = false;
+        }
     }
 }

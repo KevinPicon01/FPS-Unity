@@ -1361,7 +1361,7 @@ MonoBehaviour:
   hammerBullets: {fileID: 0}
   bulletSpawns: {fileID: 779532438}
   display: {fileID: 21087104}
-  speed: 1500
+  speed: 600
   speedback: 20
   isFiring: 0
 --- !u!82 &679329565

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Display : MonoBehaviour
 {
-    private float time = 0.2f;
+    private float time = 0.5f;
     // Start is called before the first frame update
     void Start()
     {
